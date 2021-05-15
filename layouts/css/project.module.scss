@@ -1,0 +1,53 @@
+.css {
+  :global {
+    // table: clone-wars
+    .wrapper-outer {
+      // large screen: show full height table,small: show fixed width to prevent breaking page width
+      @apply flex flex-col md:h-full h-screen overflow-initial;
+    }
+    .wrapper-table {
+      // small screen: show fixed width and scroll to prevent breaking page width
+      @apply overflow-auto md:overflow-initial;
+    }
+
+    table {
+      @apply relative w-full m-0;
+
+      thead {
+        @apply whitespace-nowrap;
+        tr {
+          th:last-child {
+            @apply pr-3;
+          }
+          th:first-child {
+            @apply pl-3;
+          }
+          th {
+            @apply sticky top-0  text-blue-900 bg-blue-200  py-3;
+          }
+        }
+      }
+
+      tbody {
+        @apply bg-blue-50 divide-y divide-gray-300;
+
+        tr {
+          td a {
+            // `overflow normal` to not break table links.. useful when viewing in mobile
+            @apply no-underline hover:underline font-normal overflow-normal;
+          }
+          td:last-child {
+            @apply pr-3;
+          }
+          td:first-child {
+            @apply pl-3 font-semibold;
+          }
+          td:nth-child(2),
+          td:nth-child(3) {
+            @apply lg:break-all;
+          }
+        }
+      }
+    }
+  }
+}
